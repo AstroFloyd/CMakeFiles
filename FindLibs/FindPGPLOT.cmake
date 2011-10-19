@@ -36,71 +36,73 @@
 ## -----------------------------------------------------------------------------
 ## Standard locations where to look for required components
 
-include (CMakeSettings)
+include( CMakeLocations )
 
 ## -----------------------------------------------------------------------------
 ## Check for the header files
 
-FIND_PATH (PGPLOT_INCLUDES cpgplot.h
+find_path( PGPLOT_INCLUDES cpgplot.h
   PATHS ${include_locations} ${lib_locations}
   PATH_SUFFIXES pgplot
   )
 
 ## -----------------------------------------------------------------------------
-## Check for the library
+## Check for the library:
 
-set (PGPLOT_LIBRARIES "")
+set( PGPLOT_LIBRARIES "" )
 
-find_library (PGPLOT_LIBRARY
+find_library( PGPLOT_LIBRARY
   NAMES pgplot
   PATHS ${lib_locations}
   PATH_SUFFIXES pgplot
   NO_DEFAULT_PATH
   )
 
-if (PGPLOT_LIBRARY)
-  list (APPEND PGPLOT_LIBRARIES ${PGPLOT_LIBRARY})
-  get_filename_component(PGPLOT_LIBRARY_DIR ${PGPLOT_LIBRARY} PATH)
-else (PGPLOT_LIBRARY)
-  message (STATUS "Warning: Unable to locate libpgplot!")
-endif (PGPLOT_LIBRARY)
+if( PGPLOT_LIBRARY )
+  list( APPEND PGPLOT_LIBRARIES ${PGPLOT_LIBRARY} )
+  get_filename_component( PGPLOT_LIBRARY_DIR ${PGPLOT_LIBRARY} PATH )
+else( PGPLOT_LIBRARY )
+  message ( WARNING "Warning: Unable to locate libpgplot!" )
+endif( PGPLOT_LIBRARY )
 
 
 ## -----------------------------------------------------------------------------
-## Actions taken when all components have been found
+## Actions taken when all components have been found:
 
-IF (PGPLOT_INCLUDES AND PGPLOT_LIBRARIES)
-  SET (HAVE_PGPLOT TRUE)
-ELSE (PGPLOT_INCLUDES AND PGPLOT_LIBRARIES)
-  SET (HAVE_PGPLOT FALSE)
-  IF (NOT PGPLOT_FIND_QUIETLY)
-    IF (NOT PGPLOT_INCLUDES)
-      MESSAGE (STATUS "Unable to find PGPLOT header files!")
-    ENDIF (NOT PGPLOT_INCLUDES)
-    IF (NOT PGPLOT_LIBRARIES)
-      MESSAGE (STATUS "Unable to find PGPLOT library files!")
-    ENDIF (NOT PGPLOT_LIBRARIES)
-  ENDIF (NOT PGPLOT_FIND_QUIETLY)
-ENDIF (PGPLOT_INCLUDES AND PGPLOT_LIBRARIES)
+if( PGPLOT_INCLUDES AND PGPLOT_LIBRARIES )
+  set( HAVE_PGPLOT TRUE )
+else( PGPLOT_INCLUDES AND PGPLOT_LIBRARIES )
+  set( HAVE_PGPLOT FALSE )
+  if( NOT PGPLOT_FIND_QUIETLY )
+    if( NOT PGPLOT_INCLUDES )
+      message( WARNING "Unable to find PGPLOT header files!" )
+    endif( NOT PGPLOT_INCLUDES )
+    if( NOT PGPLOT_LIBRARIES )
+      message( WARNING "Unable to find PGPLOT library files!" )
+    endif( NOT PGPLOT_LIBRARIES )
+  endif( NOT PGPLOT_FIND_QUIETLY )
+endif( PGPLOT_INCLUDES AND PGPLOT_LIBRARIES )
 
-if (HAVE_PGPLOT)
-  if (NOT PGPLOT_FIND_QUIETLY)
-    message (STATUS "Found components for PGPLOT")
-    message (STATUS "PGPLOT_INCLUDES  = ${PGPLOT_INCLUDES}")
-    message (STATUS "PGPLOT_LIBRARIES = ${PGPLOT_LIBRARIES}")
-  endif (NOT PGPLOT_FIND_QUIETLY)
-else (HAVE_PGPLOT)
-  if (PGPLOT_FIND_REQUIRED)
-    message (FATAL_ERROR "Could not find PGPLOT!")
-  endif (PGPLOT_FIND_REQUIRED)
-endif (HAVE_PGPLOT)
+if( HAVE_PGPLOT )
+  if( NOT PGPLOT_FIND_QUIETLY )
+    message( STATUS "Found components for PGPLOT:" )
+    message( STATUS "PGPLOT_INCLUDES  = ${PGPLOT_INCLUDES}" )
+    message( STATUS "PGPLOT_LIBRARIES = ${PGPLOT_LIBRARIES}" )
+  endif( NOT PGPLOT_FIND_QUIETLY )
+else( HAVE_PGPLOT )
+  if( PGPLOT_FIND_REQUIRED )
+    message( FATAL_ERROR "Could not find PGPLOT!" )
+  endif( PGPLOT_FIND_REQUIRED )
+endif( HAVE_PGPLOT )
+
 
 ## -----------------------------------------------------------------------------
-## Mark as advanced ...
+## Mark as advanced options in ccmake/cmake-gui menu:
 
-mark_as_advanced (
+mark_as_advanced(
   PGPLOT_INCLUDES
   PGPLOT_LIBRARIES
   PGPLOT_LIBRARY
   PGPLOT_LIBRARY_DIR
   )
+

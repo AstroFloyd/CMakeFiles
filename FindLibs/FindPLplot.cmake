@@ -8,10 +8,10 @@
 
 
 # Standard locations where to look for required components:
-include (CMakeLocations)
+include( CMakeLocations )
 
 
-FIND_PATH(
+find_path(
   PLplot_INCLUDE_DIR
   #NAMES plplot.h
   NAMES plplot.mod
@@ -20,19 +20,19 @@ FIND_PATH(
   PATH_SUFFIXES plplot fortran/modules/plplot
 )
 
-IF( PLplot_INCLUDE_DIR )
+if( PLplot_INCLUDE_DIR )
   find_library( PLplot_LIBRARY
     NAMES plplotd
     PATHS /usr/local/lib /usr/lib
   )
-  if(PLplot_LIBRARY)
+  if( PLplot_LIBRARY )
     set( PLplot_LIBRARY_DIR "" )
-    get_filename_component(PLplot_LIBRARY_DIRS ${PLplot_LIBRARY} PATH)
+    get_filename_component( PLplot_LIBRARY_DIRS ${PLplot_LIBRARY} PATH )
     # Set uncached variables as per standard.
-    set(PLplot_FOUND ON)
-    set(PLplot_INCLUDE_DIRS ${PLplot_INCLUDE_DIR})
-    set(PLplot_LIBRARIES ${PLplot_LIBRARY})
-  endif(PLplot_LIBRARY)
+    set( PLplot_FOUND ON )
+    set( PLplot_INCLUDE_DIRS ${PLplot_INCLUDE_DIR} )
+    set( PLplot_LIBRARIES ${PLplot_LIBRARY} )
+  endif( PLplot_LIBRARY )
   
   # find cxx bindings
   find_library( PLplot_cxx_LIBRARY
@@ -69,16 +69,16 @@ IF( PLplot_INCLUDE_DIR )
   if( PLplot_wxwidgets_LIBRARY )
     set( PLplot_LIBRARIES ${PLplot_LIBRARIES} ${PLplot_wxwidgets_LIBRARY} )
   endif( PLplot_wxwidgets_LIBRARY )
-endif(PLplot_INCLUDE_DIR)
+endif( PLplot_INCLUDE_DIR )
 	    
-if(PLplot_FOUND)
-  if(NOT PLplot_FIND_QUIETLY)
-    message(STATUS "FindPLplot: Found both PLplot headers and library")
-    message (STATUS "PLplot_INCLUDE_DIRS  = ${PLplot_INCLUDE_DIRS}")
-    message (STATUS "PLplot_LIBRARIES = ${PLplot_LIBRARIES}")
-  endif(NOT PLplot_FIND_QUIETLY)
-else(PLplot_FOUND)
-  if(PLplot_FIND_REQUIRED)
-    message(FATAL_ERROR "FindPLplot: Could not find PLplot headers or library")
-  endif(PLplot_FIND_REQUIRED)
-endif(PLplot_FOUND)
+if( PLplot_FOUND )
+  if( NOT PLplot_FIND_QUIETLY )
+    message( STATUS "FindPLplot: Found both PLplot headers and library" )
+    message( STATUS "PLplot_INCLUDE_DIRS  = ${PLplot_INCLUDE_DIRS}" )
+    message( STATUS "PLplot_LIBRARIES = ${PLplot_LIBRARIES}" )
+  endif( NOT PLplot_FIND_QUIETLY )
+else( PLplot_FOUND )
+  if( PLplot_FIND_REQUIRED )
+    message( FATAL_ERROR "FindPLplot: Could not find PLplot headers or library" )
+  endif( PLplot_FIND_REQUIRED )
+endif( PLplot_FOUND )
