@@ -28,7 +28,7 @@
 # - Check for the presence of the PGPLOT library
 #
 # Defines the following variables:
-#  HAVE_PGPLOT        = 
+#  PGPLOT_FOUND       = 
 #  PGPLOT_INCLUDES    = Path to the PGPLOT header files
 #  PGPLOT_LIBRARIES   = Path to all parts of the PGPLOT library
 #  PGPLOT_LIBRARY_DIR = Path to the directory containing the PGPLOT libraries
@@ -70,9 +70,9 @@ endif( PGPLOT_LIBRARY )
 ## Actions taken when all components have been found:
 
 if( PGPLOT_INCLUDES AND PGPLOT_LIBRARIES )
-  set( HAVE_PGPLOT TRUE )
+  set( PGPLOT_FOUND TRUE )
 else( PGPLOT_INCLUDES AND PGPLOT_LIBRARIES )
-  set( HAVE_PGPLOT FALSE )
+  set( PGPLOT_FOUND FALSE )
   if( NOT PGPLOT_FIND_QUIETLY )
     if( NOT PGPLOT_INCLUDES )
       message( WARNING "Unable to find PGPLOT header files!" )
@@ -83,17 +83,19 @@ else( PGPLOT_INCLUDES AND PGPLOT_LIBRARIES )
   endif( NOT PGPLOT_FIND_QUIETLY )
 endif( PGPLOT_INCLUDES AND PGPLOT_LIBRARIES )
 
-if( HAVE_PGPLOT )
+if( PGPLOT_FOUND )
   if( NOT PGPLOT_FIND_QUIETLY )
     message( STATUS "Found components for PGPLOT:" )
     message( STATUS "PGPLOT_INCLUDES  = ${PGPLOT_INCLUDES}" )
     message( STATUS "PGPLOT_LIBRARIES = ${PGPLOT_LIBRARIES}" )
   endif( NOT PGPLOT_FIND_QUIETLY )
-else( HAVE_PGPLOT )
+else( PGPLOT_FOUND )
   if( PGPLOT_FIND_REQUIRED )
     message( FATAL_ERROR "Could not find PGPLOT!" )
+  else( PGPLOT_FIND_REQUIRED )
+    message( STATUS "Could not find PGPLOT" )
   endif( PGPLOT_FIND_REQUIRED )
-endif( HAVE_PGPLOT )
+endif( PGPLOT_FOUND )
 
 
 ## -----------------------------------------------------------------------------

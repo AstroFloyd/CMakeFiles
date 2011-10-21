@@ -5,7 +5,7 @@
 # - Check for the presence of the LibSUFR library
 #
 # Defines the following variables:
-#  HAVE_LibSUFR        = 
+#  LibSUFR_FOUND       = 
 #  LibSUFR_INCLUDES    = Path to the LibSUFR header files
 #  LibSUFR_LIBRARIES   = Path to all parts of the LibSUFR library
 #  LibSUFR_LIBRARY_DIR = Path to the directory containing the LibSUFR libraries
@@ -45,9 +45,9 @@ endif( LibSUFR_LIBRARY )
 
 
 if( LibSUFR_INCLUDES AND LibSUFR_LIBRARIES )
-  set( HAVE_LibSUFR TRUE )
+  set( LibSUFR_FOUND TRUE )
 else( LibSUFR_INCLUDES AND LibSUFR_LIBRARIES )
-  set( HAVE_LibSUFR FALSE )
+  set( LibSUFR_FOUND FALSE )
   if( NOT LibSUFR_FIND_QUIETLY )
     if( NOT LibSUFR_INCLUDES )
       message( STATUS "Unable to find LibSUFR header files!" )
@@ -58,17 +58,17 @@ else( LibSUFR_INCLUDES AND LibSUFR_LIBRARIES )
   endif( NOT LibSUFR_FIND_QUIETLY )
 endif( LibSUFR_INCLUDES AND LibSUFR_LIBRARIES )
 
-if( HAVE_LibSUFR )
+if( LibSUFR_FOUND )
   if( NOT LibSUFR_FIND_QUIETLY )
     message( STATUS "Found components for LibSUFR:" )
     message( STATUS "LibSUFR_INCLUDES  = ${LibSUFR_INCLUDES}" )
     message( STATUS "LibSUFR_LIBRARIES = ${LibSUFR_LIBRARIES}" )
   endif( NOT LibSUFR_FIND_QUIETLY )
-else( HAVE_LibSUFR )
+else( LibSUFR_FOUND )
   if( LibSUFR_FIND_REQUIRED )
     message( FATAL_ERROR "Could not find LibSUFR!" )
   endif( LibSUFR_FIND_REQUIRED )
-endif( HAVE_LibSUFR )
+endif( LibSUFR_FOUND )
 
 ## -----------------------------------------------------------------------------
 ## Mark as advanced ...

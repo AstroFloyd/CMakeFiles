@@ -33,6 +33,7 @@ set (bin_locations
   /usr/local/bin
   /sw/bin
   ${HOME}/usr/bin
+  ${HOME}/bin
   CACHE
   PATH
   "Extra directories to look for executable files"
@@ -49,6 +50,7 @@ set (include_locations
   /opt/local/include
   /sw/include
   ${HOME}/usr/include
+  ${HOME}/include
   CACHE
   PATH
   "Directories to look for include files"
@@ -67,6 +69,7 @@ set (lib_locations
   /opt/local/lib
   /sw/lib
   ${HOME}/usr/lib
+  ${HOME}/lib
   CACHE
   PATH
   "Directories to look for libraries"
@@ -74,5 +77,5 @@ set (lib_locations
   )
 
 
-#message (${lib_locations})
+message( "${lib_locations}" )
 
