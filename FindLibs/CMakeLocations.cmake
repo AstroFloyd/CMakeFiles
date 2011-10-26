@@ -4,15 +4,17 @@
 
 ## Variables used through the configuration environment:
 ##
-##  LIB_LOCATIONS     -- 
-##  INCLUDE_LOCATIONS -- 
+##  search_locations    --   ?
+##  bin_locations       --   executables
+##  include_locations   --   header and module files
+##  lib_locations       --   libraries
 
 
 # User's home directory:
-set(HOME $ENV{HOME})
-
+set( HOME $ENV{HOME} )
   
-set (search_locations
+
+set( search_locations
   /usr
   /usr/local
   /opt
@@ -25,10 +27,11 @@ set (search_locations
   FORCE
   )
 
+
 ## ---------------------------------------------------------------------------
 ## locations in which to look for applications/binaries
 
-set (bin_locations
+set( bin_locations
   /usr/bin
   /usr/local/bin
   /sw/bin
@@ -40,10 +43,11 @@ set (bin_locations
   FORCE
   )
 
-## ----------------------------------------------------------------------------
-## locations in which to look for header files
 
-set (include_locations
+## ----------------------------------------------------------------------------
+## locations in which to look for header and module files
+
+set( include_locations
   /usr/include
   /usr/local/include
   /opt/include
@@ -57,10 +61,11 @@ set (include_locations
   FORCE
   )
 
+
 ## ----------------------------------------------------------------------------
 ## locations in which to look for libraries
 
-set (lib_locations
+set( lib_locations
   /usr/local/lib64
   /usr/local/lib
   /usr/lib64
@@ -77,5 +82,8 @@ set (lib_locations
   )
 
 
-message( "${lib_locations}" )
+#message( "${search_locations}" )
+#message( "${bin_locations}" )
+#message( "${include_locations}" )
+#message( "${lib_locations}" )
 
