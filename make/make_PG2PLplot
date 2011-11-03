@@ -10,7 +10,6 @@ make_g95=0
 make_ifort=0
 
 
-
 if [ ${make_gfortran} -eq 1 ]; then
     echo -e "\n\nMake with gfortran:"
     make clean
@@ -20,6 +19,7 @@ if [ ${make_gfortran} -eq 1 ]; then
     if [ $? -ne 0 ]; then
 	exit 1
     fi
+    rm -rf ../usr/
 fi
 
 if [ ${make_g95}  -eq 1 ]; then
@@ -31,6 +31,7 @@ if [ ${make_g95}  -eq 1 ]; then
     if [ $? -ne 0 ]; then
 	exit 1
     fi
+    rm -rf ../usr/
 fi
 
 if [ ${make_ifort}  -eq 1 ]; then
@@ -42,9 +43,8 @@ if [ ${make_ifort}  -eq 1 ]; then
     if [ $? -ne 0 ]; then
 	exit 1
     fi
+    rm -rf ../usr/
 fi
 
 
-rm -rf ../usr/
-rm -rf CMakeFiles/
 

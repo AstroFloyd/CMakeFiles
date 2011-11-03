@@ -3,14 +3,33 @@
 # Get compiler name:
 get_filename_component( Fortran_COMPILER_NAME ${CMAKE_Fortran_COMPILER} NAME )
 
+# Are we on Linux?
+if( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )
+  set( LINUX TRUE )
+endif( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )
+
 
 ######################################################################################################################################################
 #  Specific options per compiler:
 ######################################################################################################################################################
 if( Fortran_COMPILER_NAME MATCHES "gfortran" )
   
-  set( CMAKE_Fortran_FLAGS_ALL "-std=f2008 -fall-intrinsics -pedantic" )               # v.4.4
-  #set( CMAKE_Fortran_FLAGS_ALL "-fwhole-file -std=f2008 -fall-intrinsics -pedantic" )  # v.4.5
+  # Get compiler version:
+  exec_program(
+    ${CMAKE_Fortran_COMPILER}
+    ARGS --version
+    OUTPUT_VARIABLE _compiler_output)
+  string(REGEX REPLACE ".* ([0-9]\\.[0-9]\\.[0-9]).*" "\\1"
+    COMPILER_VERSION ${_compiler_output})
+  #message(STATUS "Fortran compiler version: ${_compiler_output} ")
+  #message(STATUS "Fortran compiler version: ${COMPILER_VERSION}")
+  
+  
+  set( CMAKE_Fortran_FLAGS_ALL "-std=f2008 -fall-intrinsics -pedantic" )
+  if( COMPILER_VERSION VERSION_GREATER "4.4.99" )
+    set( CMAKE_Fortran_FLAGS_ALL "${CMAKE_Fortran_FLAGS_ALL} -fwhole-file" )  # >= v.4.5
+  endif( COMPILER_VERSION VERSION_GREATER "4.4.99" )
+  
   set( CMAKE_Fortran_FLAGS "-pipe -funroll-all-loops" )
   set( CMAKE_Fortran_FLAGS_RELEASE "-pipe -funroll-all-loops" )
   set( CMAKE_Fortran_FLAGS_DEBUG "-g -ffpe-trap=zero,invalid -fsignaling-nans -fbacktrace" )
@@ -30,8 +49,13 @@ if( Fortran_COMPILER_NAME MATCHES "gfortran" )
   endif( WANT_STATIC )
   
   if( WANT_CHECKS )
-    set( CHECK_FLAGS "-fbounds-check -ffpe-trap=zero,invalid -fsignaling-nans -fbacktrace" ) # v.4.4
-    #set( CHECK_FLAGS "-fcheck=all -ffpe-trap=zero,invalid -fsignaling-nans -fbacktrace" )  # v.4.5
+    set( CHECK_FLAGS "-ffpe-trap=zero,invalid -fsignaling-nans -fbacktrace" )
+    if( COMPILER_VERSION VERSION_GREATER "4.4.99" )
+      set( CHECK_FLAGS "-fcheck=all ${CHECK_FLAGS}" )    # >= v.4.5
+    else( COMPILER_VERSION VERSION_GREATER "4.4.99" )
+      set( CHECK_FLAGS "-fbounds-check ${CHECK_FLAGS}" ) # <= v.4.4
+    endif( COMPILER_VERSION VERSION_GREATER "4.4.99" )
+
     set( OPT_FLAGS "-O0" )
   else( WANT_CHECKS )
     set( OPT_FLAGS "-O2" )
@@ -55,6 +79,16 @@ if( Fortran_COMPILER_NAME MATCHES "gfortran" )
   
   ####################################################################################################################################################
 elseif( Fortran_COMPILER_NAME MATCHES "g95" )
+  
+  # Get compiler version:
+  exec_program(
+    ${CMAKE_Fortran_COMPILER}
+    ARGS --version
+    OUTPUT_VARIABLE _compiler_output)
+  string(REGEX REPLACE ".*g95 ([0-9]*\\.[0-9]*).*" "\\1"
+    COMPILER_VERSION ${_compiler_output})
+  #message(STATUS "Fortran compiler version: ${_compiler_output} ")
+  #message(STATUS "Fortran compiler version: ${COMPILER_VERSION}")
   
   
   set( CMAKE_Fortran_FLAGS "" )
@@ -90,9 +124,21 @@ elseif( Fortran_COMPILER_NAME MATCHES "g95" )
   ####################################################################################################################################################
 elseif( Fortran_COMPILER_NAME MATCHES "ifort" )
   
+  # Get compiler version:
+  exec_program(
+    ${CMAKE_Fortran_COMPILER}
+    ARGS --version
+    OUTPUT_VARIABLE _compiler_output)
+  string(REGEX REPLACE ".* ([0-9]*\\.[0-9]*\\.[0-9]*) .*" "\\1"
+    COMPILER_VERSION ${_compiler_output})
+  #message(STATUS "Fortran compiler version: ${_compiler_output} ")
+  #message(STATUS "Fortran compiler version: ${COMPILER_VERSION}")
   
-  set( CMAKE_Fortran_FLAGS_ALL "-nogen-interfaces -mcmodel=medium" )  # -mcmodel exists for Linux only...
+  set( CMAKE_Fortran_FLAGS_ALL "-nogen-interfaces" )
   set( CMAKE_Fortran_FLAGS "-vec-guard-write -fpconstant -funroll-loops -align all -ip" )
+  if( LINUX )
+    set( CMAKE_Fortran_FLAGS_ALL "${CMAKE_Fortran_FLAGS} -mcmodel=medium" )  # -mcmodel exists for Linux only...
+  endif( LINUX )
   set( CMAKE_Fortran_FLAGS_RELEASE "-vec-guard-write -fpconstant -funroll-loops -align all -ip" )
   set( CMAKE_Fortran_FLAGS_DEBUG "-g -traceback" )
   set( CMAKE_Fortran_FLAGS_PROFILE "-g -gp" )
@@ -181,7 +227,7 @@ set( CMAKE_Fortran_FLAGS_RELWITHDEBINFO "${CMAKE_Fortran_FLAGS_RELEASE} -g" )
 ######################################################################################################################################################
 
 message( STATUS "" )
-message( STATUS "Using Fortran compiler: " ${Fortran_COMPILER_NAME} " (" ${CMAKE_Fortran_COMPILER}")" )
+message( STATUS "Using Fortran compiler:  ${Fortran_COMPILER_NAME} ${COMPILER_VERSION}  (${CMAKE_Fortran_COMPILER})" )
 
 if( WANT_CHECKS )
   message( STATUS "Compiling with run-time checks:  ${CHECK_FLAGS}" )
