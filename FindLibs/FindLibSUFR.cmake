@@ -17,24 +17,46 @@ include( CMakeLocations )
 
 
 
-# Check for the header files:
+# Check for COMPILER-SPECIFIC header files:
 find_path( LibSUFR_INCLUDES 
   NAMES sufr_constants.mod
   PATHS ${include_locations} ${lib_locations}
-  PATH_SUFFIXES libSUFR libSUFR/${Fortran_COMPILER_NAME}
+  PATH_SUFFIXES libSUFR/${Fortran_COMPILER_NAME}
   )
+
+# If not found, check for GENERAL header files:
+if( NOT LibSUFR_INCLUDES )
+  find_path( LibSUFR_INCLUDES 
+    NAMES sufr_constants.mod
+    PATHS ${include_locations} ${lib_locations}
+    PATH_SUFFIXES libSUFR
+    )
+endif( NOT LibSUFR_INCLUDES )
+
+
 
 
 
 # Check for the libraries:
 set( LibSUFR_LIBRARIES "" )
 
+# Check for COMPILER-SPECIFIC libraries:
 find_library( LibSUFR_LIBRARY
-  NAMES SUFR SUFR_${Fortran_COMPILER_NAME}
+  NAMES SUFR_${Fortran_COMPILER_NAME}
   PATHS ${lib_locations}
-  PATH_SUFFIXES libSUFR libSUFR_${Fortran_COMPILER_NAME}
+  PATH_SUFFIXES libSUFR_${Fortran_COMPILER_NAME} libSUFR
   NO_DEFAULT_PATH
   )
+
+# If not found, check for GENERAL libraries:
+if( NOT LibSUFR_LIBRARY )
+  find_library( LibSUFR_LIBRARY
+    NAMES SUFR
+    PATHS ${lib_locations}
+    PATH_SUFFIXES libSUFR
+    NO_DEFAULT_PATH
+    )  
+endif( NOT LibSUFR_LIBRARY )
 
 # Libraries found?
 if( LibSUFR_LIBRARY )
@@ -43,6 +65,7 @@ if( LibSUFR_LIBRARY )
   get_filename_component( LibSUFR_LIBRARY_DIR ${LibSUFR_LIBRARY} PATH )
   
 endif( LibSUFR_LIBRARY )
+
 
 
 
@@ -76,9 +99,10 @@ endif( LibSUFR_INCLUDES AND LibSUFR_LIBRARIES )
 if( LibSUFR_FOUND )
   
   if( NOT LibSUFR_FIND_QUIETLY )
+    message( STATUS "" )
     message( STATUS "Found components for LibSUFR:" )
-    message( STATUS "LibSUFR_INCLUDES  = ${LibSUFR_INCLUDES}" )
-    message( STATUS "LibSUFR_LIBRARIES = ${LibSUFR_LIBRARIES}" )
+    message( STATUS "* LibSUFR_INCLUDES  = ${LibSUFR_INCLUDES}" )
+    message( STATUS "* LibSUFR_LIBRARIES = ${LibSUFR_LIBRARIES}" )
   endif( NOT LibSUFR_FIND_QUIETLY )
   
 else( LibSUFR_FOUND )

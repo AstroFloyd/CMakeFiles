@@ -91,7 +91,7 @@ elseif( Fortran_COMPILER_NAME MATCHES "g95" )
 elseif( Fortran_COMPILER_NAME MATCHES "ifort" )
   
   
-  set( CMAKE_Fortran_FLAGS_ALL "-nogen-interfaces -mcmodel=medium" )
+  set( CMAKE_Fortran_FLAGS_ALL "-nogen-interfaces -mcmodel=medium" )  # -mcmodel exists for Linux only...
   set( CMAKE_Fortran_FLAGS "-vec-guard-write -fpconstant -funroll-loops -align all -ip" )
   set( CMAKE_Fortran_FLAGS_RELEASE "-vec-guard-write -fpconstant -funroll-loops -align all -ip" )
   set( CMAKE_Fortran_FLAGS_DEBUG "-g -traceback" )
@@ -180,6 +180,7 @@ set( CMAKE_Fortran_FLAGS_RELWITHDEBINFO "${CMAKE_Fortran_FLAGS_RELEASE} -g" )
 #  Report what's going on:
 ######################################################################################################################################################
 
+message( STATUS "" )
 message( STATUS "Using Fortran compiler: " ${Fortran_COMPILER_NAME} " (" ${CMAKE_Fortran_COMPILER}")" )
 
 if( WANT_CHECKS )
@@ -197,6 +198,7 @@ endif( WANT_STATIC )
 
 
 message( STATUS "Compiler flags used:  ${CMAKE_Fortran_FLAGS}" )
+message( STATUS "" )
 
 
 

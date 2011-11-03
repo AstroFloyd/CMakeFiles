@@ -4,11 +4,11 @@
 
 # Check for the presence of the PLplot headers and libraries
 #
-# This CMake module defines the following uncached variables:
-#  PLplot_FOUND, if false, do not try to use PLplot.
-#  PLplot_INCLUDE_DIRS, where to find plplot.h.
-#  PLplot_LIBRARIES, the libraries to link against to use PLplot
-#  PLplot_LIBRARY_DIRS, the directory where the PLplot library is found.
+# This CMake module defines the following variables:
+#  PLplot_FOUND        =  Libraries and headers found; TRUE/FALSE
+#  PLplot_INCLUDES     =  Path to the PLplot header files
+#  PLplot_LIBRARIES    =  Path to all parts of the PLplot libraries
+#  PLplot_LIBRARY_DIRS =  Path to the directories containing the PLplot libraries
 
 
 
@@ -40,7 +40,7 @@ if( PLplot_INCLUDE_DIR )
     get_filename_component( PLplot_LIBRARY_DIRS ${PLplot_LIBRARY} PATH )
     # Set uncached variables as per standard.
     set( PLplot_FOUND TRUE )
-    set( PLplot_INCLUDE_DIRS ${PLplot_INCLUDE_DIR} )
+    set( PLplot_INCLUDES ${PLplot_INCLUDE_DIR} )
     set( PLplot_LIBRARIES ${PLplot_LIBRARY} )
     
   else( PLplot_LIBRARY )
@@ -124,7 +124,7 @@ if( PLplot_FOUND )
   
   if( NOT PLplot_FIND_QUIETLY )
     message( STATUS "FindPLplot: Found both PLplot headers and libraries" )
-    message( STATUS "PLplot_INCLUDE_DIRS  = ${PLplot_INCLUDE_DIRS}" )
+    message( STATUS "PLplot_INCLUDES  = ${PLplot_INCLUDES}" )
     message( STATUS "PLplot_LIBRARIES = ${PLplot_LIBRARIES}" )
   endif( NOT PLplot_FIND_QUIETLY )
   
