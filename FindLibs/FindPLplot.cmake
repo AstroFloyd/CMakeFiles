@@ -123,9 +123,10 @@ endif( PLplot_INCLUDE_DIR )
 if( PLplot_FOUND )
   
   if( NOT PLplot_FIND_QUIETLY )
-    message( STATUS "FindPLplot: Found both PLplot headers and libraries" )
-    message( STATUS "PLplot_INCLUDES  = ${PLplot_INCLUDES}" )
-    message( STATUS "PLplot_LIBRARIES = ${PLplot_LIBRARIES}" )
+    message( STATUS "" )
+    message( STATUS "Found components for PLplot:" )
+    message( STATUS "* PLplot_INCLUDES  = ${PLplot_INCLUDES}" )
+    message( STATUS "* PLplot_LIBRARIES = ${PLplot_LIBRARIES}" )
   endif( NOT PLplot_FIND_QUIETLY )
   
 else( PLplot_FOUND )

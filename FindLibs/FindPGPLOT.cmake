@@ -90,9 +90,10 @@ endif( PGPLOT_INCLUDES AND PGPLOT_LIBRARIES )
 if( PGPLOT_FOUND )
   
   if( NOT PGPLOT_FIND_QUIETLY )
+    message( STATUS "" )
     message( STATUS "Found components for PGPLOT:" )
-    message( STATUS "PGPLOT_INCLUDES  = ${PGPLOT_INCLUDES}" )
-    message( STATUS "PGPLOT_LIBRARIES = ${PGPLOT_LIBRARIES}" )
+    message( STATUS "* PGPLOT_INCLUDES  = ${PGPLOT_INCLUDES}" )
+    message( STATUS "* PGPLOT_LIBRARIES = ${PGPLOT_LIBRARIES}" )
   endif( NOT PGPLOT_FIND_QUIETLY )
   
 else( PGPLOT_FOUND )
