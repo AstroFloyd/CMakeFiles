@@ -56,7 +56,7 @@ set( INCLUDE_FLAGS "-I${LibSUFR_INCLUDES}" )  # will be transferred to CompilerF
 include( FileList )
 
 # Set FORTRAN compiler flags:
-include( CompilerFlags )
+include( CompilerFlags_Fortran )
 
 
 # Create the file code_version.f90, which contains the svn version number and date:
