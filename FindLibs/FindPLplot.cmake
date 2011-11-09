@@ -1,6 +1,6 @@
 # Find PLplot headers and libraries
 # AF, October 2010
-
+# This file is biased to finding Fortran libraries
 
 # Check for the presence of the PLplot headers and libraries
 #
@@ -17,23 +17,52 @@ include( CMakeLocations )
 
 
 
-# Check for the header files:
+# Check for (FORTRAN)COMPILER-SPECIFIC header files:
 find_path( PLplot_INCLUDE_DIR
-  #NAMES plplot.h
   NAMES plplot.mod
   PATHS ${include_locations} ${lib_locations}
-  PATH_SUFFIXES plplot fortran/modules/plplot
+  PATH_SUFFIXES ${Fortran_COMPILER_NAME} plplot/${Fortran_COMPILER_NAME} fortran/modules/plplot/${Fortran_COMPILER_NAME}
 )
+
+# If not found, check for GENERAL Fortran header files:
+if( NOT PLplot_INCLUDE_DIR )
+  find_path( PLplot_INCLUDE_DIR
+    NAMES plplot.mod
+    PATHS ${include_locations} ${lib_locations}
+    PATH_SUFFIXES plplot fortran/modules/plplot
+    )
+endif( NOT PLplot_INCLUDE_DIR )
+
+# If not found, check for C header files:
+if( NOT PLplot_INCLUDE_DIR )
+  find_path( PLplot_INCLUDE_DIR
+    NAMES plplot.h
+    PATHS ${include_locations} ${lib_locations}
+    PATH_SUFFIXES plplot fortran/modules/plplot
+    )
+endif( NOT PLplot_INCLUDE_DIR )
+
 
 
 
 # Check for the libraries:
 if( PLplot_INCLUDE_DIR )
   
+  # Check for the library files:
   find_library( PLplot_LIBRARY
-    NAMES plplotd
+    NAMES plplotf95d_${Fortran_COMPILER_NAME}
     PATHS ${lib_locations}
+    PATH_SUFFIXES plplot/${Fortran_COMPILER_NAME} ${Fortran_COMPILER_NAME} plplot
     )
+  
+  if( NOT PLplot_LIBRARY )
+    find_library( PLplot_LIBRARY
+      NAMES plplotd
+      PATHS ${lib_locations}
+      PATH_SUFFIXES plplot
+      )
+  endif( NOT PLplot_LIBRARY )
+  
   
   if( PLplot_LIBRARY )
     set( PLplot_LIBRARY_DIR "" )
@@ -83,19 +112,36 @@ if( PLplot_INCLUDE_DIR )
   
   
   # Find F95 bindings:
+  # Check for COMPILER-SPECIFIC libraries:
   find_library( PLplot_f95_LIBRARY
-    NAMES plplotf95d
+    NAMES plplotf95d_${Fortran_COMPILER_NAME}
     PATHS ${lib_locations}
-  )
+    )
+  # If not found, check for GENERAL libraries:
+  if( NOT PLplot_f95_LIBRARY )
+    find_library( PLplot_f95_LIBRARY
+      NAMES plplotf95d
+      PATHS ${lib_locations}
+      )
+  endif( NOT PLplot_f95_LIBRARY )
   if( PLplot_f95_LIBRARY )
     set( PLplot_LIBRARIES ${PLplot_LIBRARIES} ${PLplot_f95_LIBRARY} )
+    get_filename_component( PLplot_LIBRARY_DIRS ${PLplot_LIBRARY} PATH )
   endif( PLplot_f95_LIBRARY )
   
   # Find F95c bindings:
+  # Check for COMPILER-SPECIFIC libraries:
   find_library( PLplot_f95c_LIBRARY
-    NAMES plplotf95cd
+    NAMES plplotf95cd_${Fortran_COMPILER_NAME}
     PATHS ${lib_locations}
-  )
+    )
+  # If not found, check for GENERAL libraries:
+  if( NOT PLplot_f95c_LIBRARY )
+    find_library( PLplot_f95c_LIBRARY
+      NAMES plplotf95cd
+      PATHS ${lib_locations}
+      )
+  endif( NOT PLplot_f95c_LIBRARY )
   if( PLplot_f95c_LIBRARY )
     set( PLplot_LIBRARIES ${PLplot_LIBRARIES} ${PLplot_f95c_LIBRARY} )
   endif( PLplot_f95c_LIBRARY )
