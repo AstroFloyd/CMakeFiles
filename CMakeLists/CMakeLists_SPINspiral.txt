@@ -48,10 +48,14 @@ set( CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/usr/bin" )
 find_package( GSL REQUIRED )
 find_package( LibM REQUIRED )
 find_package( FFTW3 REQUIRED )
-find_package( LALFrame REQUIRED )
-find_package( LALInspiral REQUIRED )
 set( INCLUDE_FLAGS "-I${CMAKE_SOURCE_DIR}/include -I${LibM_INCLUDES} -I${GSL_INCLUDES} -I${FFTW3_INCLUDES}" )  # will be transferred to CompilerFlags
-set( INCLUDE_FLAGS "${INCLUDE_FLAGS} -I${LALFrame_INCLUDES} -I${LALInspiral_INCLUDES}" )  # will be transferred to CompilerFlags
+
+find_package( LAL REQUIRED )
+find_package( LibFrame REQUIRED )
+find_package( LALFrame REQUIRED )
+find_package( LALMetaio REQUIRED )
+find_package( LALInspiral REQUIRED )
+set( INCLUDE_FLAGS "${INCLUDE_FLAGS} -I${LAL_INCLUDES} -I${LibFrame_INCLUDES} -I${LALFrame_INCLUDES} -I${LALMetaio_INCLUDES} -I${LALInspiral_INCLUDES}" )  # will be transferred to CompilerFlags
 
 
 
@@ -82,7 +86,7 @@ endif( CREATE_VERSION )
 
 # Create executable targets:
 add_executable( SPINspiral ${SPINspiral_src_files} )
-target_link_libraries( SPINspiral ${LibM_LIBRARIES} ${GSL_LIBRARIES} ${FFTW3_LIBRARIES} ${LALFrame_LIBRARIES} ${LALInspiral_LIBRARIES} )
+target_link_libraries( SPINspiral ${LibM_LIBRARIES} ${GSL_LIBRARIES} ${FFTW3_LIBRARIES} ${LAL_LIBRARIES} ${LibFrame_LIBRARIES} ${LALFrame_LIBRARIES} ${LALMetaio_LIBRARIES} ${LALInspiral_LIBRARIES} )
 
 # Set module directory:
 set_target_properties( SPINspiral PROPERTIES C_MODULE_DIRECTORY ${MODULE_DIRECTORY} )
@@ -93,6 +97,6 @@ set_target_properties( SPINspiral PROPERTIES C_MODULE_DIRECTORY ${MODULE_DIRECTO
 # - use DIRECTORY rather than TARGETS so that I don't need to specify them all again...
 install( DIRECTORY usr/bin/ 
     FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE 
-    DESTINATION ${CMAKE_SOURCE_DIR} )
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/bin )
 
 
