@@ -1,6 +1,7 @@
-# Check for the presence of the FFTW3 headers and libraries
-# AF, 26/10/2011
-#
+## FindFFTW3.cmake:
+## Check for the presence of the FFTW3 headers and libraries
+## AF, 26/10/2011
+
 # This CMake module defines the following variables:
 #  FFTW3_FOUND        =  Libraries and headers found; TRUE/FALSE
 #  FFTW3_INCLUDES     =  Path to the FFTW3 header files

@@ -1,6 +1,7 @@
-# Check for the presence of the GSL headers and libraries
-# AF, 26/10/2011
-#
+## FindGSL.cmake:
+## Check for the presence of the GSL headers and libraries
+## AF, 26/10/2011
+
 # This CMake module defines the following variables:
 #  GSL_FOUND        =  Libraries and headers found; TRUE/FALSE
 #  GSL_INCLUDES     =  Path to the GSL header files

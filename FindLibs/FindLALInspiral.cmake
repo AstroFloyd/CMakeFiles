@@ -1,6 +1,7 @@
-# Check for the presence of the LALInspiral headers and libraries
-# AF, 26/10/2011
-#
+## FindLALInspiral.cmake:
+## Check for the presence of the LALInspiral headers and libraries
+## AF, 26/10/2011
+
 # This CMake module defines the following variables:
 #  LALInspiral_FOUND        =  Libraries and headers found; TRUE/FALSE
 #  LALInspiral_INCLUDES     =  Path to the LALInspiral header files

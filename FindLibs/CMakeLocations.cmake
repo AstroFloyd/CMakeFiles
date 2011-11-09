@@ -1,6 +1,8 @@
-## -----------------------------------------------------------------------------
-## $Id:: CMakeLocations.cmake, from CMakeSettings.cmake 2818 2009-07-15 19:02:31Z baehren                 $
-## -----------------------------------------------------------------------------
+## CMakeLocations.cmake:
+## Set search locations for libraries and header files on Linux/Unix/BSD/MacOSX
+##
+## Adapted from CMakeSettings.cmake 2818 2009-07-15 19:02:31Z baehren
+## by AF
 
 ## Variables used through the configuration environment:
 ##

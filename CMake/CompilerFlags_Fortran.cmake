@@ -1,4 +1,7 @@
-# Compiler flags for Fortran compilers
+## CompilerFlags_Fortran.cmake
+## Compiler flags for Fortran compilers
+## Currently, specific flags for gfortran, g95 and ifort are provided
+
 
 # Get compiler name:
 get_filename_component( Fortran_COMPILER_NAME ${CMAKE_Fortran_COMPILER} NAME )

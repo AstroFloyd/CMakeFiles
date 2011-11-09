@@ -1,3 +1,7 @@
+## FileList_example.cmake:
+## Example of FileList.cmake
+
+
 set(libTheSky_src_files
   src/code_version.f90
   src/comets.f90

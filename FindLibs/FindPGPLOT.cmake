@@ -1,6 +1,7 @@
+## FindPGPLOT.cmake:
 ## Adapted from:
-## http://usg.lofar.org/websvn/filedetails.php?repname=repos+1&path=%2Fcode%2Ftrunk%2Fdevel_common%2Fcmake%2FFindPGPLOT.cmake&sc=1
-## by AF on 27/12/2010
+##   http://usg.lofar.org/websvn/filedetails.php?repname=repos+1&path=%2Fcode%2Ftrunk%2Fdevel_common%2Fcmake%2FFindPGPLOT.cmake&sc=1
+##   by AF on 27/12/2010
 
 
 # +-----------------------------------------------------------------------------+

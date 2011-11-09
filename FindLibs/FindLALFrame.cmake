@@ -1,6 +1,7 @@
-# Check for the presence of the LALFrame headers and libraries
-# AF, 26/10/2011
-#
+## FindLALFrame.cmake:
+## Check for the presence of the LALFrame headers and libraries
+## AF, 26/10/2011
+
 # This CMake module defines the following variables:
 #  LALFrame_FOUND        =  Libraries and headers found; TRUE/FALSE
 #  LALFrame_INCLUDES     =  Path to the LALFrame header files

@@ -1,6 +1,7 @@
-# Check for the presence of the LibM headers and libraries
-# AF, 26/10/2011
-#
+## FindLibM.cmake:
+## Check for the presence of the LibM headers and libraries
+## AF, 26/10/2011
+
 # This CMake module defines the following variables:
 #  LibM_FOUND        =  Libraries and headers found; TRUE/FALSE
 #  LibM_INCLUDES     =  Path to the LibM header files

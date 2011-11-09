@@ -1,4 +1,7 @@
-# Compiler flags for C compilers
+## CompilerFlags_C.cmake
+## Compiler flags for C compilers
+## Currently, specific flags for gcc, clang and icc are provided
+
 
 # Get compiler name:
 get_filename_component( C_COMPILER_NAME ${CMAKE_C_COMPILER} NAME )
@@ -7,7 +10,7 @@ get_filename_component( C_COMPILER_NAME ${CMAKE_C_COMPILER} NAME )
 ######################################################################################################################################################
 #  Specific options per compiler:
 ######################################################################################################################################################
-if( C_COMPILER_NAME MATCHES "gcc" )
+if( C_COMPILER_NAME MATCHES "gcc" OR C_COMPILER_NAME MATCHES "clang" )
   
   set( CMAKE_C_FLAGS_ALL "-std=c99 -pedantic" )
   #set( CMAKE_C_FLAGS_ALL " ${CMAKE_C_FLAGS_ALL} -fwhole-program" )
@@ -105,7 +108,7 @@ elseif( C_COMPILER_NAME MATCHES "icc" )
   
   
   ####################################################################################################################################################
-else( C_COMPILER_NAME MATCHES "gcc" )
+else( C_COMPILER_NAME MATCHES "gcc" OR C_COMPILER_NAME MATCHES "clang" )
   
   
   message( "CMAKE_C_COMPILER full path: " ${CMAKE_C_COMPILER} )
@@ -121,7 +124,7 @@ else( C_COMPILER_NAME MATCHES "gcc" )
   set( PACKAGE_FLAGS "" )
   
   
-endif( C_COMPILER_NAME MATCHES "gcc" )
+endif( C_COMPILER_NAME MATCHES "gcc" OR C_COMPILER_NAME MATCHES "clang" )
 ######################################################################################################################################################
 
 
