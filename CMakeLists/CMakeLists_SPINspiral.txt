@@ -39,7 +39,7 @@ include( SetCompileOptions )
 # Place the products in their directories:
 get_filename_component( C_COMPILER_NAME ${CMAKE_C_COMPILER} NAME )
 set( MODULE_DIRECTORY "${CMAKE_SOURCE_DIR}/usr/include" )
-set( LIBRARY_OUTPUT_PATH "${CMAKE_SOURCE_DIR}/usr/lib" )
+set( LIBRARY_OUTPUT_PATH "${CMAKE_SOURCE_DIR}/usr/lib${LIB_SUFFIX}" )
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/usr/bin" )
 
 
