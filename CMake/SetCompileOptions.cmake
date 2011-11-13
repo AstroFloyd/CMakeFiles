@@ -15,8 +15,8 @@ option( WANT_HOST_OPT           "Enable host-specific optimisation. Choose only 
 option( WANT_IPO                "Inter-procedural optimisation" off )
 option( WANT_STATIC             "Generate statically linked executable" off )
 
-option( WANT_LIBRARY            "Use compiler options to create libraries" on )
-option( CREATE_SHAREDLIB        "Create shared libraries" on )
-option( CREATE_STATICLIB        "Create static libraries" on )
+option( WANT_LIBRARY            "Use compiler options to create libraries" off )
+option( CREATE_SHAREDLIB        "Create shared libraries" off )
+option( CREATE_STATICLIB        "Create static libraries" off )
 option( COMPILER_SPECIFIC_LIBS  "Create compiler-specific libraries" off )
 
