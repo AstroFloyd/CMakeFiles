@@ -58,10 +58,10 @@ else( FFTW3_INCLUDES AND FFTW3_LIBRARIES )
   
   if( NOT FFTW3_FIND_QUIETLY )
     if( NOT FFTW3_INCLUDES )
-      message( WARNING "Unable to find FFTW3 header files!" )
+      message( STATUS "!! Unable to find FFTW3 header files!" )
     endif( NOT FFTW3_INCLUDES )
     if( NOT FFTW3_LIBRARIES )
-      message( WARNING "Unable to find FFTW3 library files!" )
+      message( STATUS "!! Unable to find FFTW3 library files!" )
     endif( NOT FFTW3_LIBRARIES )
   endif( NOT FFTW3_FIND_QUIETLY )
   
@@ -83,7 +83,7 @@ if( FFTW3_FOUND )
 else( FFTW3_FOUND )
   
   if( FFTW3_FIND_REQUIRED )
-    message( FATAL_ERROR "Could not find FFTW3 headers or libraries!" )
+    message( FATAL_ERROR "!! Could not find FFTW3 headers or libraries!" )
   endif( FFTW3_FIND_REQUIRED )
   
 endif( FFTW3_FOUND )

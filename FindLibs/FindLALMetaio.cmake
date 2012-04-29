@@ -58,10 +58,10 @@ else( LALMetaio_INCLUDES AND LALMetaio_LIBRARIES )
   
   if( NOT LALMetaio_FIND_QUIETLY )
     if( NOT LALMetaio_INCLUDES )
-      message( WARNING "Unable to find LALMetaio header files!" )
+      message( STATUS "!! Unable to find LALMetaio header files!" )
     endif( NOT LALMetaio_INCLUDES )
     if( NOT LALMetaio_LIBRARIES )
-      message( WARNING "Unable to find LALMetaio library files!" )
+      message( STATUS "!! Unable to find LALMetaio library files!" )
     endif( NOT LALMetaio_LIBRARIES )
   endif( NOT LALMetaio_FIND_QUIETLY )
   
@@ -83,7 +83,7 @@ if( LALMetaio_FOUND )
 else( LALMetaio_FOUND )
   
   if( LALMetaio_FIND_REQUIRED )
-    message( FATAL_ERROR "Could not find LALMetaio headers or libraries!" )
+    message( FATAL_ERROR "!! Could not find LALMetaio headers or libraries!" )
   endif( LALMetaio_FIND_REQUIRED )
   
 endif( LALMetaio_FOUND )

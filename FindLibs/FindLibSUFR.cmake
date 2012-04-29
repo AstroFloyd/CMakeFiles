@@ -16,6 +16,10 @@
 # Standard locations where to look for required components:
 include( CMakeLocations )
 
+if( NOT LibSUFR_FIND_QUIETLY )
+  message( STATUS "" )
+  message( STATUS "Looking for LibSUFR..." )
+endif( NOT LibSUFR_FIND_QUIETLY )
 
 
 # Check for COMPILER-SPECIFIC header files:
@@ -84,10 +88,10 @@ else( LibSUFR_INCLUDES AND LibSUFR_LIBRARIES )
   
   if( NOT LibSUFR_FIND_QUIETLY )
     if( NOT LibSUFR_INCLUDES )
-      message( WARNING "Unable to find LibSUFR header files!" )
+      message( STATUS "!! Unable to find LibSUFR header files!" )
     endif( NOT LibSUFR_INCLUDES )
     if( NOT LibSUFR_LIBRARIES )
-      message( WARNING "Unable to find LibSUFR library files!" )
+      message( STATUS "!! Unable to find LibSUFR library files!" )
     endif( NOT LibSUFR_LIBRARIES )
   endif( NOT LibSUFR_FIND_QUIETLY )
   
@@ -100,7 +104,6 @@ endif( LibSUFR_INCLUDES AND LibSUFR_LIBRARIES )
 if( LibSUFR_FOUND )
   
   if( NOT LibSUFR_FIND_QUIETLY )
-    message( STATUS "" )
     message( STATUS "Found components for LibSUFR:" )
     message( STATUS "* LibSUFR_INCLUDES  = ${LibSUFR_INCLUDES}" )
     message( STATUS "* LibSUFR_LIBRARIES = ${LibSUFR_LIBRARIES}" )
@@ -109,7 +112,9 @@ if( LibSUFR_FOUND )
 else( LibSUFR_FOUND )
   
   if( LibSUFR_FIND_REQUIRED )
-    message( FATAL_ERROR "Could not find LibSUFR headers or libraries!" )
+    message( FATAL_ERROR "!! Could not find LibSUFR headers or libraries!" )
+  else( LibSUFR_FIND_REQUIRED )
+    message( STATUS "!! Could not find LibSUFR headers or libraries!" )
   endif( LibSUFR_FIND_REQUIRED )
   
 endif( LibSUFR_FOUND )

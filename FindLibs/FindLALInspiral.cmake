@@ -58,10 +58,10 @@ else( LALInspiral_INCLUDES AND LALInspiral_LIBRARIES )
   
   if( NOT LALInspiral_FIND_QUIETLY )
     if( NOT LALInspiral_INCLUDES )
-      message( WARNING "Unable to find LALInspiral header files!" )
+      message( STATUS "!! Unable to find LALInspiral header files!" )
     endif( NOT LALInspiral_INCLUDES )
     if( NOT LALInspiral_LIBRARIES )
-      message( WARNING "Unable to find LALInspiral library files!" )
+      message( STATUS "!! Unable to find LALInspiral library files!" )
     endif( NOT LALInspiral_LIBRARIES )
   endif( NOT LALInspiral_FIND_QUIETLY )
   
@@ -83,7 +83,7 @@ if( LALInspiral_FOUND )
 else( LALInspiral_FOUND )
   
   if( LALInspiral_FIND_REQUIRED )
-    message( FATAL_ERROR "Could not find LALInspiral headers or libraries!" )
+    message( FATAL_ERROR "!! Could not find LALInspiral headers or libraries!" )
   endif( LALInspiral_FIND_REQUIRED )
   
 endif( LALInspiral_FOUND )

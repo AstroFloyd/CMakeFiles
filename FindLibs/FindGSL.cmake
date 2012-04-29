@@ -58,10 +58,10 @@ else( GSL_INCLUDES AND GSL_LIBRARIES )
   
   if( NOT GSL_FIND_QUIETLY )
     if( NOT GSL_INCLUDES )
-      message( WARNING "Unable to find GSL header files!" )
+      message( STATUS "!! Unable to find GSL header files!" )
     endif( NOT GSL_INCLUDES )
     if( NOT GSL_LIBRARIES )
-      message( WARNING "Unable to find GSL library files!" )
+      message( STATUS "!! Unable to find GSL library files!" )
     endif( NOT GSL_LIBRARIES )
   endif( NOT GSL_FIND_QUIETLY )
   
@@ -83,7 +83,7 @@ if( GSL_FOUND )
 else( GSL_FOUND )
   
   if( GSL_FIND_REQUIRED )
-    message( FATAL_ERROR "Could not find GSL headers or libraries!" )
+    message( FATAL_ERROR "!! Could not find GSL headers or libraries!" )
   endif( GSL_FIND_REQUIRED )
   
 endif( GSL_FOUND )

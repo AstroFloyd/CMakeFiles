@@ -59,10 +59,10 @@ else( LibM_INCLUDES AND LibM_LIBRARIES )
   
   if( NOT LibM_FIND_QUIETLY )
     if( NOT LibM_INCLUDES )
-      message( WARNING "Unable to find LibM header files!" )
+      message( STATUS "!! Unable to find LibM header files!" )
     endif( NOT LibM_INCLUDES )
     if( NOT LibM_LIBRARIES )
-      message( WARNING "Unable to find LibM library files!" )
+      message( STATUS "!! Unable to find LibM library files!" )
     endif( NOT LibM_LIBRARIES )
   endif( NOT LibM_FIND_QUIETLY )
   
@@ -84,7 +84,7 @@ if( LibM_FOUND )
 else( LibM_FOUND )
   
   if( LibM_FIND_REQUIRED )
-    message( FATAL_ERROR "Could not find LibM headers or libraries!" )
+    message( FATAL_ERROR "!! Could not find LibM headers or libraries!" )
   endif( LibM_FIND_REQUIRED )
   
 endif( LibM_FOUND )

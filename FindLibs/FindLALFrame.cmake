@@ -58,10 +58,10 @@ else( LALFrame_INCLUDES AND LALFrame_LIBRARIES )
   
   if( NOT LALFrame_FIND_QUIETLY )
     if( NOT LALFrame_INCLUDES )
-      message( WARNING "Unable to find LALFrame header files!" )
+      message( STATUS "!! Unable to find LALFrame header files!" )
     endif( NOT LALFrame_INCLUDES )
     if( NOT LALFrame_LIBRARIES )
-      message( WARNING "Unable to find LALFrame library files!" )
+      message( STATUS "!! Unable to find LALFrame library files!" )
     endif( NOT LALFrame_LIBRARIES )
   endif( NOT LALFrame_FIND_QUIETLY )
   
@@ -83,7 +83,7 @@ if( LALFrame_FOUND )
 else( LALFrame_FOUND )
   
   if( LALFrame_FIND_REQUIRED )
-    message( FATAL_ERROR "Could not find LALFrame headers or libraries!" )
+    message( FATAL_ERROR "!! Could not find LALFrame headers or libraries!" )
   endif( LALFrame_FIND_REQUIRED )
   
 endif( LALFrame_FOUND )

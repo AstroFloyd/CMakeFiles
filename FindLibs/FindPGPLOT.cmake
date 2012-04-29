@@ -39,6 +39,12 @@
 include( CMakeLocations )
 
 
+if( NOT PGPLOT_FIND_QUIETLY )
+  message( STATUS "" )
+  message( STATUS "Looking for PGPLOT...  " )
+endif( NOT PGPLOT_FIND_QUIETLY )
+
+
 # Check for the header files:
 find_path( 
   PGPLOT_INCLUDES 
@@ -62,7 +68,7 @@ if( PGPLOT_LIBRARY )
   list( APPEND PGPLOT_LIBRARIES ${PGPLOT_LIBRARY} )
   get_filename_component( PGPLOT_LIBRARY_DIR ${PGPLOT_LIBRARY} PATH )
 else( PGPLOT_LIBRARY )
-  message ( WARNING "Warning: Unable to locate libpgplot!" )
+  message ( STATUS "!! Warning: Unable to locate libpgplot!" )
 endif( PGPLOT_LIBRARY )
 
 
@@ -76,10 +82,10 @@ else( PGPLOT_INCLUDES AND PGPLOT_LIBRARIES )
   set( PGPLOT_FOUND FALSE )
   if( NOT PGPLOT_FIND_QUIETLY )
     if( NOT PGPLOT_INCLUDES )
-      message( WARNING "Unable to find PGPLOT header files!" )
+      message( STATUS "!! Unable to find PGPLOT header files!" )
     endif( NOT PGPLOT_INCLUDES )
     if( NOT PGPLOT_LIBRARIES )
-      message( WARNING "Unable to find PGPLOT library files!" )
+      message( STATUS "!! Unable to find PGPLOT library files!" )
     endif( NOT PGPLOT_LIBRARIES )
   endif( NOT PGPLOT_FIND_QUIETLY )
   
@@ -91,7 +97,6 @@ endif( PGPLOT_INCLUDES AND PGPLOT_LIBRARIES )
 if( PGPLOT_FOUND )
   
   if( NOT PGPLOT_FIND_QUIETLY )
-    message( STATUS "" )
     message( STATUS "Found components for PGPLOT:" )
     message( STATUS "* PGPLOT_INCLUDES  = ${PGPLOT_INCLUDES}" )
     message( STATUS "* PGPLOT_LIBRARIES = ${PGPLOT_LIBRARIES}" )
@@ -100,9 +105,9 @@ if( PGPLOT_FOUND )
 else( PGPLOT_FOUND )
   
   if( PGPLOT_FIND_REQUIRED )
-    message( FATAL_ERROR "Could not find PGPLOT!" )
+    message( FATAL_ERROR "!! Could not find PGPLOT!" )
   else( PGPLOT_FIND_REQUIRED )
-    message( STATUS "Could not find PGPLOT" )
+    message( STATUS "!! Could not find PGPLOT" )
   endif( PGPLOT_FIND_REQUIRED )
   
 endif( PGPLOT_FOUND )

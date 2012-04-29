@@ -58,10 +58,10 @@ else( LibFrame_INCLUDES AND LibFrame_LIBRARIES )
   
   if( NOT LibFrame_FIND_QUIETLY )
     if( NOT LibFrame_INCLUDES )
-      message( WARNING "Unable to find LibFrame header files!" )
+      message( STATUS "!! Unable to find LibFrame header files!" )
     endif( NOT LibFrame_INCLUDES )
     if( NOT LibFrame_LIBRARIES )
-      message( WARNING "Unable to find LibFrame library files!" )
+      message( STATUS "!! Unable to find LibFrame library files!" )
     endif( NOT LibFrame_LIBRARIES )
   endif( NOT LibFrame_FIND_QUIETLY )
   
@@ -83,7 +83,7 @@ if( LibFrame_FOUND )
 else( LibFrame_FOUND )
   
   if( LibFrame_FIND_REQUIRED )
-    message( FATAL_ERROR "Could not find LibFrame headers or libraries!" )
+    message( FATAL_ERROR "!! Could not find LibFrame headers or libraries!" )
   endif( LibFrame_FIND_REQUIRED )
   
 endif( LibFrame_FOUND )

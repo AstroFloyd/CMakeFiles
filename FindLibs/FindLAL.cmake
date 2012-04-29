@@ -58,10 +58,10 @@ else( LAL_INCLUDES AND LAL_LIBRARIES )
   
   if( NOT LAL_FIND_QUIETLY )
     if( NOT LAL_INCLUDES )
-      message( WARNING "Unable to find LAL header files!" )
+      message( STATUS "!! Unable to find LAL header files!" )
     endif( NOT LAL_INCLUDES )
     if( NOT LAL_LIBRARIES )
-      message( WARNING "Unable to find LAL library files!" )
+      message( STATUS "!! Unable to find LAL library files!" )
     endif( NOT LAL_LIBRARIES )
   endif( NOT LAL_FIND_QUIETLY )
   
@@ -83,7 +83,7 @@ if( LAL_FOUND )
 else( LAL_FOUND )
   
   if( LAL_FIND_REQUIRED )
-    message( FATAL_ERROR "Could not find LAL headers or libraries!" )
+    message( FATAL_ERROR "!! Could not find LAL headers or libraries!" )
   endif( LAL_FIND_REQUIRED )
   
 endif( LAL_FOUND )

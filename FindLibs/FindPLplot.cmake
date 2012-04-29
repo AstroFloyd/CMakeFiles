@@ -16,6 +16,10 @@
 # Standard locations where to look for required components:
 include( CMakeLocations )
 
+if( NOT PLplot_FIND_QUIETLY )
+  message( STATUS "" )
+  message( STATUS "Looking for PLplot..." )
+endif( NOT PLplot_FIND_QUIETLY )
 
 
 # Check for (FORTRAN)COMPILER-SPECIFIC header files:
@@ -76,7 +80,7 @@ if( PLplot_INCLUDE_DIR )
   else( PLplot_LIBRARY )
     
     set( PLplot_FOUND FALSE )
-    message( WARNING "FindPLplot: Could not find PLplot libraries" )
+    message( STATUS "!! FindPLplot: Could not find PLplot libraries" )
   endif( PLplot_LIBRARY )
   
   
@@ -161,7 +165,7 @@ if( PLplot_INCLUDE_DIR )
 else( PLplot_INCLUDE_DIR )
   
   set( PLplot_FOUND FALSE )
-  message( WARNING "FindPLplot: Could not find PLplot headers" )
+  message( STATUS "!! FindPLplot: Could not find PLplot headers" )
   
 endif( PLplot_INCLUDE_DIR )
 
@@ -170,7 +174,6 @@ endif( PLplot_INCLUDE_DIR )
 if( PLplot_FOUND )
   
   if( NOT PLplot_FIND_QUIETLY )
-    message( STATUS "" )
     message( STATUS "Found components for PLplot:" )
     message( STATUS "* PLplot_INCLUDES  = ${PLplot_INCLUDES}" )
     message( STATUS "* PLplot_LIBRARIES = ${PLplot_LIBRARIES}" )
@@ -179,7 +182,9 @@ if( PLplot_FOUND )
 else( PLplot_FOUND )
   
   if( PLplot_FIND_REQUIRED )
-    message( FATAL_ERROR "FindPLplot: Could not find PLplot headers or libraries" )
+    message( FATAL_ERROR "!! FindPLplot: Could not find PLplot headers or libraries" )
+  else( PLplot_FIND_REQUIRED )
+    message( STATUS "!! FindPLplot: Could not find PLplot headers or libraries" )
   endif( PLplot_FIND_REQUIRED )
   
 endif( PLplot_FOUND )
