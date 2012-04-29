@@ -104,7 +104,7 @@ elseif( Fortran_COMPILER_NAME MATCHES "g95" )
   
   if( WANT_WARNINGS )
     # 102: module procedure not referenced,  136: module variable not used,  165: implicit interface
-    set( WARN_FLAGS "-Wall -Wextra -Wno=102,136,165" )
+    set( WARN_FLAGS "-Wall -Wextra -Wno=165" )
     set( WARN_FLAGS "-std=f2003 ${WARN_FLAGS}" )
   endif( WANT_WARNINGS )
   if( STOP_ON_WARNING )
@@ -172,6 +172,10 @@ elseif( Fortran_COMPILER_NAME MATCHES "ifort" )
   if( WANT_WARNINGS )
     set( WARN_FLAGS "-warn all -stand f03 -diag-disable 6894,8290,8291" )   # 8290,8291: format for F,ES: too many decimal places (for negative numbers)
   endif( WANT_WARNINGS )
+  
+  if( STOP_ON_WARNING )
+    # set( WARN_FLAGS "${WARN_FLAGS}" )  # No option found yet - remove 'unused' warning from CMake this way
+  endif( STOP_ON_WARNING )
   
   if( WANT_LIBRARY )
     set( LIB_FLAGS "-fPIC -g" )
