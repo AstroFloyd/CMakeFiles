@@ -23,7 +23,7 @@ FindLibs/	This directory contains FindLib.cmake files.  All files use CMakeLocat
 
 LICENCE:
 
-Copyright 2011 AstroFloyd - astrofloyd.org
+Copyright 2011-2013, AstroFloyd
  
 This file is part of the CMakeFiles package.
  
