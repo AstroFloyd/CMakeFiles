@@ -1,27 +1,25 @@
-## FileList_example.cmake:
-## Example of FileList.cmake
-
-
-set(libTheSky_src_files
-  src/code_version.f90
-  src/comets.f90
-  src/functions.f90
-  src/modules.f90
-  src/moon.f90
-  src/nutation.f90
-  src/planets.f90
-  src/riset.f90
-  src/satellites.f90
-  src/stars.f90
-  src/textfunctions.f90
-  )
-
-set(libTheSkyMap_src_files
-  src/mapfunctions.f90
-  src/maproutines.f90
-  )
-
-set(libTheSkyCGI_src_files
-  src/cgi_routines.f90
+set(SRC_FILES
+  src/angle2string.f90
+  src/angles.f90
+  src/astro.f90
+  src/command_line.f90
+  src/constants.f90
+  src/date_and_time.f90
+  src/earth.f90
+  src/fitting.f90
+  src/interpolate.f90
+  src/kinds.f90
+  src/libSUFR_version.f90
+  src/numerics.f90
+  src/random_numbers.f90
+  src/solvers.f90
+  src/sorting.f90
+  src/sports.f90
+  src/statistics.f90
+  src/system.f90
+  src/text.f90
+  src/text_html.f90
+  src/time2string.f90
+  src/weather.f90
   )
 
