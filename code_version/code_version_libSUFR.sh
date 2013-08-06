@@ -2,7 +2,7 @@
 
 ##  code_version.sh:
 ##  Write the git hash or release-version number of the code and the compiler name to a Fortran source file
-##  Copyright (c) 2010-2013 AstroFloyd, astrofloyd.org
+##  Copyright (c) 2010-2013 AstroFloyd - astrofloyd.org
 ##  
 ##  24/07/2010, AF: initial version for AnalyseMCMC, svn
 ##  06/10/2011, AF: svn -> bzr
