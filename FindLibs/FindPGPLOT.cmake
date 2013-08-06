@@ -1,38 +1,30 @@
-## FindPGPLOT.cmake:
-## Adapted from:
-##   http://usg.lofar.org/websvn/filedetails.php?repname=repos+1&path=%2Fcode%2Ftrunk%2Fdevel_common%2Fcmake%2FFindPGPLOT.cmake&sc=1
-##   by AF on 27/12/2010
-
-
-# +-----------------------------------------------------------------------------+
-# | $Id:: FindPGPLOT.cmake 3830 2009-12-09 14:35:58Z alexov                   $ |
-# +-----------------------------------------------------------------------------+
-# |   Copyright (C) 2007                                                        |
-# |   Lars B"ahren (bahren@astron.nl)                                           |
-# |                                                                             |
-# |   This program is free software; you can redistribute it and/or modify      |
-# |   it under the terms of the GNU General Public License as published by      |
-# |   the Free Software Foundation; either version 2 of the License, or         |
-# |   (at your option) any later version.                                       |
-# |                                                                             |
-# |   This program is distributed in the hope that it will be useful,           |
-# |   but WITHOUT ANY WARRANTY; without even the implied warranty of            |
-# |   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             |
-# |   GNU General Public License for more details.                              |
-# |                                                                             |
-# |   You should have received a copy of the GNU General Public License         |
-# |   along with this program; if not, write to the                             |
-# |   Free Software Foundation, Inc.,                                           |
-# |   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.                 |
-# +-----------------------------------------------------------------------------+
-
-# - Check for the presence of the PGPLOT library
-#
-# Defines the following variables:
-#  PGPLOT_FOUND       = 
-#  PGPLOT_INCLUDES    = Path to the PGPLOT header files
-#  PGPLOT_LIBRARIES   = Path to all parts of the PGPLOT library
-#  PGPLOT_LIBRARY_DIR = Path to the directory containing the PGPLOT libraries
+##  FindPGPLOT.cmake:
+##  Check for the presence of the PGPLOT library
+##  Adapted by AF on 2010-12-27, from:
+##    http://usg.lofar.org/websvn/filedetails.php?repname=repos+1&path=%2Fcode%2Ftrunk%2Fdevel_common%2Fcmake%2FFindPGPLOT.cmake&sc=1
+##    $Id:: FindPGPLOT.cmake 3830 2009-12-09 14:35:58Z alexov
+##  
+##  Copyright (C) 2007 Lars B"ahren (bahren@astron.nl)
+##  Copyright 2010-2013 AstroFloyd - astrofloyd.org
+##   
+##  This file is part of the CMakeFiles package, 
+##  see: http://cmakefiles.sf.net/
+##   
+##  This is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published
+##  by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+##  
+##  This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+##  
+##  You should have received a copy of the GNU General Public License along with this code.  If not, see 
+##  <http://www.gnu.org/licenses/>.
+##
+##
+##  Defines the following variables:
+##    PGPLOT_FOUND       = 
+##    PGPLOT_INCLUDES    = Path to the PGPLOT header files
+##    PGPLOT_LIBRARIES   = Path to all parts of the PGPLOT library
+##    PGPLOT_LIBRARY_DIR = Path to the directory containing the PGPLOT libraries
 
 
 # Standard locations where to look for required components:

@@ -1,12 +1,27 @@
-## FindFFTW3.cmake:
-## Check for the presence of the FFTW3 headers and libraries
-## AF, 26/10/2011
-
-# This CMake module defines the following variables:
-#  FFTW3_FOUND        =  Libraries and headers found; TRUE/FALSE
-#  FFTW3_INCLUDES     =  Path to the FFTW3 header files
-#  FFTW3_LIBRARIES    =  Path to all parts of the FFTW3 libraries
-#  FFTW3_LIBRARY_DIR  =  Path to the directory containing the FFTW3 libraries
+##  FindFFTW3.cmake:
+##  Check for the presence of the FFTW3 headers and libraries
+##  AF, 2011-10-26
+##  
+##  Copyright 2010-2013 AstroFloyd - astrofloyd.org
+##   
+##  This file is part of the CMakeFiles package, 
+##  see: http://cmakefiles.sf.net/
+##   
+##  This is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published
+##  by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+##  
+##  This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+##  
+##  You should have received a copy of the GNU General Public License along with this code.  If not, see 
+##  <http://www.gnu.org/licenses/>.
+##
+##
+##  This CMake module defines the following variables:
+##    FFTW3_FOUND        =  Libraries and headers found; TRUE/FALSE
+##    FFTW3_INCLUDES     =  Path to the FFTW3 header files
+##    FFTW3_LIBRARIES    =  Path to all parts of the FFTW3 libraries
+##    FFTW3_LIBRARY_DIR  =  Path to the directory containing the FFTW3 libraries
 
 
 

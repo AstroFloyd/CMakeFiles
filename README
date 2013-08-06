@@ -13,6 +13,9 @@ CMake/		This directory contains CMake modules like compiler options and an examp
 CMakeLists/	This directory contains example CMakeLists.txt files.
 		Put one of these files in the main project directory.
 
+code_version/	This directory contains example code_version.sh scripts that generate code to generate
+		the code version/hash/date.  Put one of these files in the main project directory if needed.
+
 FindLibs/	This directory contains FindLib.cmake files.  All files use CMakeLocations.cmake, which
 		is designed for Linux/Unix/BSD/MacOS.  Put these files in the CMake/ subdirectory of the 
 		main project directory.
@@ -23,9 +26,10 @@ FindLibs/	This directory contains FindLib.cmake files.  All files use CMakeLocat
 
 LICENCE:
 
-Copyright 2011-2013, AstroFloyd
+Copyright 2010-2013, AstroFloyd - astrofloyd.org
  
 This file is part of the CMakeFiles package.
+See: http://cmakefiles.sf.net/
  
 This is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published
 by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.

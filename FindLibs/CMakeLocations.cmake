@@ -1,15 +1,29 @@
-## CMakeLocations.cmake:
-## Set search locations for libraries and header files on Linux/Unix/BSD/MacOSX
+##  CMakeLocations.cmake:
+##  Set search locations for libraries and header files on Linux/Unix/BSD/MacOSX
+##  Adapted from CMakeSettings.cmake 2818 2009-07-15 19:02:31Z baehren
+##    by AstroFloyd - astrofloyd.org
+##  
+##  Copyright (C) 2007 Lars B"ahren (bahren@astron.nl)
+##  Copyright 2010-2013 AstroFloyd - astrofloyd.org
+##   
+##  This file is part of the CMakeFiles package, 
+##  see: http://cmakefiles.sf.net/
+##   
+##  This is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published
+##  by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+##  
+##  This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+##  
+##  You should have received a copy of the GNU General Public License along with this code.  If not, see 
+##  <http://www.gnu.org/licenses/>.
 ##
-## Adapted from CMakeSettings.cmake 2818 2009-07-15 19:02:31Z baehren
-## by AstroFloyd - astrofloyd.org
-
-## Variables used through the configuration environment:
 ##
-##  search_locations    --   ?
-##  bin_locations       --   executables
-##  include_locations   --   header and module files
-##  lib_locations       --   libraries
+##  Variables used through the configuration environment:
+##    search_locations    --   general files (?)
+##    bin_locations       --   executables
+##    include_locations   --   header and module files
+##    lib_locations       --   libraries
 
 
 # User's home directory:
