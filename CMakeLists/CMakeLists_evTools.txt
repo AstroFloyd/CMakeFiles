@@ -5,7 +5,7 @@
 ##  To compile, from the directory that contains this file, do:
 ##    $ mkdir build; cd build
 ##    $ cmake ..
-##    $ make
+##    $ make install
 ##
 
 
@@ -77,18 +77,44 @@ endif( CREATE_VERSION )
 
 # Create executable targets that don't need PGPlot:
 add_executable( dat2plt  src/dat2plt.f90 ${evTools_std_files} )
+target_link_libraries( dat2plt  ${LibSUFR_LIBRARIES} )
+
 add_executable( findplt  src/findplt.f90 ${evTools_std_files} )
+target_link_libraries( findplt  ${LibSUFR_LIBRARIES} )
+
 add_executable( getgrid  src/getgrid.f90 ${evTools_std_files} )
+target_link_libraries( getgrid  ${LibSUFR_LIBRARIES} )
+
 add_executable( grid  src/grid.f90 ${evTools_std_files} )
+target_link_libraries( grid  ${LibSUFR_LIBRARIES} )
+
 add_executable( listmdl  src/listmdl.f90 ${evTools_std_files} ${evTools_mdl_files} )
+target_link_libraries( listmdl  ${LibSUFR_LIBRARIES} )
+
 add_executable( listmod  src/listmod.f90 ${evTools_std_files} )
+target_link_libraries( listmod  ${LibSUFR_LIBRARIES} )
+
 add_executable( listplt  src/listplt.f90 ${evTools_std_files} )
+target_link_libraries( listplt  ${LibSUFR_LIBRARIES} )
+
 add_executable( makerun  src/makerun.f90 ${evTools_std_files} )
+target_link_libraries( makerun  ${LibSUFR_LIBRARIES} )
+
 add_executable( mergeplt  src/mergeplt.f90 ${evTools_std_files} )
+target_link_libraries( mergeplt  ${LibSUFR_LIBRARIES} )
+
 add_executable( plt2ce  src/plt2ce.f90 ${evTools_std_files} )
-add_executable( plt2dat  src/plt2dat.f90 ${evTools_std_files} )
+target_link_libraries( plt2ce  ${LibSUFR_LIBRARIES} )
+
+add_executable( plt2dat  src/plt2dat.f90 ${evTools_std_files} ${evTools_plt_files} )
+target_link_libraries( plt2dat  ${LibSUFR_LIBRARIES} )
+
 add_executable( plt2obs  src/plt2obs.f90 ${evTools_std_files} )
+target_link_libraries( plt2obs  ${LibSUFR_LIBRARIES} )
+
 add_executable( selplt  src/selplt.f90 ${evTools_std_files} ${evTools_plt_files} )
+target_link_libraries( selplt  ${LibSUFR_LIBRARIES} )
+
 
 # Set module directory:
 set_target_properties( dat2plt findplt getgrid grid listmdl listmod listplt makerun mergeplt plt2ce plt2dat plt2obs selplt 
@@ -98,20 +124,21 @@ set_target_properties( dat2plt findplt getgrid grid listmdl listmod listplt make
 
 # Create executable targets that need PGPlot:
 add_executable( plotmdl  src/plotmdl.f90 ${evTools_std_files} ${evTools_mdl_files} ${evTools_plot_files} )
+target_link_libraries( plotmdl ${PGPLOT_LIBRARIES} ${LibSUFR_LIBRARIES} )
+
 add_executable( plotmdln  src/plotmdln.f90 ${evTools_std_files} )
+target_link_libraries( plotmdln ${PGPLOT_LIBRARIES} ${LibSUFR_LIBRARIES} )
+
 add_executable( plotmod  src/plotmod.f90 ${evTools_std_files} )
+target_link_libraries( plotmod ${PGPLOT_LIBRARIES} ${LibSUFR_LIBRARIES} )
+
 add_executable( plotplt  src/plotplt.f90 ${evTools_std_files} ${evTools_plt_files} ${evTools_plot_files} )
+target_link_libraries( plotplt ${PGPLOT_LIBRARIES} ${LibSUFR_LIBRARIES} )
 
 
 # Set module directory:
 set_target_properties( plotmdl plotmdln plotmod plotplt 
   PROPERTIES Fortran_MODULE_DIRECTORY ${MODULE_DIRECTORY} )
-
-# Link against PGPlot:
-target_link_libraries( plotmdl ${PGPLOT_LIBRARIES} )
-target_link_libraries( plotmdln ${PGPLOT_LIBRARIES} )
-target_link_libraries( plotmod ${PGPLOT_LIBRARIES} )
-target_link_libraries( plotplt ${PGPLOT_LIBRARIES} )
 
 
 
