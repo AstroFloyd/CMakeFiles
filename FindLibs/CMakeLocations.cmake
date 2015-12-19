@@ -1,14 +1,15 @@
 ##  CMakeLocations.cmake:
 ##  Set search locations for libraries and header files on Linux/Unix/BSD/MacOSX
+##  
 ##  Adapted from CMakeSettings.cmake 2818 2009-07-15 19:02:31Z baehren
 ##    by AstroFloyd - astrofloyd.org
 ##  
-##  Copyright (C) 2007 Lars B"ahren (bahren@astron.nl)
-##  Copyright 2010-2013 AstroFloyd - astrofloyd.org
-##   
-##  This file is part of the CMakeFiles package, 
+##  Copyright (c) 2007 Lars B"ahren (bahren@astron.nl)
+##  Copyright (c) 2010-2015 AstroFloyd - astrofloyd.org
+##  
+##  This file is part of the CMakeFiles package,
 ##  see: http://cmakefiles.sf.net/
-##   
+##  
 ##  This is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published
 ##  by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 ##  
@@ -17,8 +18,8 @@
 ##  
 ##  You should have received a copy of the GNU General Public License along with this code.  If not, see 
 ##  <http://www.gnu.org/licenses/>.
-##
-##
+##  
+##  
 ##  Variables used through the configuration environment:
 ##    search_locations    --   general files (?)
 ##    bin_locations       --   executables
@@ -66,9 +67,13 @@ set( bin_locations
 set( include_locations
   /usr/include
   /usr/local/include
+  /usr/lib/fortran/modules
   /opt/include
   /opt/local/include
+  /opt/lib/fortran/modules
   /sw/include
+  /sw/local/include
+  /sw/lib/fortran/modules
   ${HOME}/usr/include
   ${HOME}/include
   CACHE
