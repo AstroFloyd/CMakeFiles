@@ -5,7 +5,7 @@
 ##    by AstroFloyd - astrofloyd.org
 ##  
 ##  Copyright (c) 2007 Lars B"ahren (bahren@astron.nl)
-##  Copyright (c) 2010-2015 AstroFloyd - astrofloyd.org
+##  Copyright (c) 2010-2016 AstroFloyd - astrofloyd.org
 ##  
 ##  This file is part of the CMakeFiles package,
 ##  see: http://cmakefiles.sf.net/

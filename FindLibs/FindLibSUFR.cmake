@@ -2,7 +2,7 @@
 ##  Check for the presence of the LibSUFR headers and libraries
 ##  AF, 2010-12-27
 ##  
-##  Copyright 2010-2013 AstroFloyd - astrofloyd.org
+##  Copyright 2010-2016 AstroFloyd - astrofloyd.org
 ##   
 ##  This file is part of the CMakeFiles package, 
 ##  see: http://cmakefiles.sf.net/

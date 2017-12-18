@@ -3,7 +3,7 @@
 ##  This file is biased to finding Fortran libraries
 ##  AstroFloyd, October 2010
 ##  
-##  Copyright (c) 2010-2015 AstroFloyd - astrofloyd.org
+##  Copyright (c) 2010-2017 AstroFloyd - astrofloyd.org
 ##   
 ##  This file is part of the CMakeFiles package,
 ##  see: http://cmakefiles.sf.net/
@@ -163,6 +163,25 @@ if( PLplot_INCLUDE_DIR )
   if( PLplot_f95c_LIBRARY )
     set( PLplot_LIBRARIES ${PLplot_LIBRARIES} ${PLplot_f95c_LIBRARY} )
   endif( PLplot_f95c_LIBRARY )
+  
+  
+  # Find F2008 bindings:
+  # Check for COMPILER-SPECIFIC libraries:
+  find_library( PLplot_fortran_LIBRARY
+    NAMES plplotfortran_${Fortran_COMPILER_NAME}
+    PATHS ${lib_locations}
+    )
+  # If not found, check for GENERAL libraries:
+  if( NOT PLplot_fortran_LIBRARY )
+    find_library( PLplot_fortran_LIBRARY
+      NAMES plplotfortran
+      PATHS ${lib_locations}
+      )
+  endif( NOT PLplot_fortran_LIBRARY )
+  if( PLplot_fortran_LIBRARY )
+    set( PLplot_LIBRARIES ${PLplot_LIBRARIES} ${PLplot_fortran_LIBRARY} )
+    get_filename_component( PLplot_LIBRARY_DIRS ${PLplot_LIBRARY} PATH )
+  endif( PLplot_fortran_LIBRARY )
   
   
   # Find wxwidgets bindings:

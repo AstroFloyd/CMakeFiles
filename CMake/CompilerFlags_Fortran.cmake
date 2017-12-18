@@ -3,7 +3,7 @@
 ##  Currently, specific flags for gfortran, g95 and ifort are provided
 ##  Make sure to choose the correct ~last line (printing of the compiler options)
 ##  
-##  Copyright 2010-2013 AstroFloyd - astrofloyd.org
+##  Copyright 2010-2016 AstroFloyd - astrofloyd.org
 ##   
 ##  This file is part of the CMakeFiles package, 
 ##  see: http://cmakefiles.sf.net/
